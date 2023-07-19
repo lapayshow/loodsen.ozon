@@ -91,7 +91,7 @@ class OzonImportService
   {
     $ozonCatalogProductService = $this->ozonCatalogProductService;
 
-    $productIdList = [];
+    $result = [];
     foreach ($productList as $product) {
       if (!empty($product['name'])) {
         $translitCategoryTitle = CUtil::translit($product['name'], 'ru', [200, 'L', '-', '-']);
@@ -157,13 +157,28 @@ class OzonImportService
        ],
       ])->first();
       if (!empty($isExist)) {
-        $model->setId($isExist->getValueByKey('ID'));
+        $elementId = $isExist->getValueByKey('ID');
+        $model->setId($elementId);
       }
 
-      $ozonCatalogProductService->save($model);
+      $result = $ozonCatalogProductService->save($model);
+
+      if ($result->isSuccess() == true) {
+        if ($elementId) {
+          $this->importResult['update']++;
+        } else {
+          $this->importResult['success']++;
+        }
+      } else {
+        $this->importResult['error']++;
+        $this->importResult['errorsList'][] = [
+         $product['id'],
+         $product['name'],
+        ];
+      }
     }
 
-    return [];
+    return $this->importResult;
   }
 
   protected function getSectionIdByOzonCategoryId($categoryId): ?string

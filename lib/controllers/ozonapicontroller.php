@@ -75,7 +75,8 @@ class OzonApiController extends Controller
     $result = $ozonImportService->saveProductList($productList);
 
     return "Успешно импортировано товаров: " . ($result['success'] ?? "0") . "<br>"
-     . "Уже существующих товаров: " . ($result['error'] ?? "0");
+     . "Успешно обновлено товаров: " . ($result['update'] ?? "0") . "<br>"
+     . "Ошибки импорта: "  . ($result['error'] ?? "0");
   }
 
   // Возвращает дерево категорий товаров от указанного в настройках модуля
