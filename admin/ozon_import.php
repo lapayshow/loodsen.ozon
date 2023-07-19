@@ -93,8 +93,13 @@ if ($message)
         BX.ajax.runAction('loodsen:ozon.OzonApiController.getCategories', {
             data: {}
         }).then((response) => {
-            $('.result_import_category').html(response['data']);
-            // console.log(response);
+            let success = response.data.success;
+            let exists = response.data.exists;
+            $('.result_import_category').html(
+                'Успешно импортировано категорий: ' + (success ?? 0) + '<br>' +
+                'Успешно обновлено категорий: ' + (exists ?? 0)
+            );
+            console.log(response);
         }, function (response) {
             // Ошибки импорта
             console.log(response);
@@ -107,8 +112,13 @@ if ($message)
         BX.ajax.runAction('loodsen:ozon.OzonApiController.getProducts', {
             data: {}
         }).then((response) => {
-            $('.result_import_products').html(response['data']);
-            // console.log(response);
+            let success = response.data.success;
+            let exists = response.data.exists;
+            $('.result_import_products').html(
+                'Успешно импортировано товаров: ' + (success ?? 0) + '<br>' +
+                'Успешно обновлено товаров: ' + (exists ?? 0)
+            );
+            console.log(response);
         }, function (response) {
             // Ошибки импорта
             console.log(response);

@@ -54,12 +54,12 @@ class OzonImportService
         // Если ошибка записи, принудительно проверяем символьные коды
         // новый это раздел или старый, если новый - записываем с правками translitCategoryTitle
         if ($result->isSuccess() == false) {
-          $alreadyExists = $ozonCatalogSectionService->getList([
+          $sectionExist = $ozonCatalogSectionService->getList([
            'filter' => [
               'UF_CATEGORY_ID_OZON' => (string) $category['category_id'],
            ],
           ])->first();
-          if (empty($alreadyExists)) {
+          if (empty($sectionExist)) {
             $model->setCode($translitCategoryTitle . '_' . $category['category_id']);
             $result = $ozonCatalogSectionService->save($model);
           }
@@ -68,11 +68,15 @@ class OzonImportService
         if ($result->isSuccess() == true) {
           $this->importResult['success']++;
         } else {
-          $this->importResult['error']++;
-          $this->importResult['errorsList'][] = [
-           $category['category_id'],
-           $category['title'],
-          ];
+          if (!empty($sectionExist)) {
+            $this->importResult['exists']++;
+            $this->importResult['sectionList'][] = [
+             $category['category_id'],
+             $category['title'],
+            ];
+          } else {
+            $this->importResult['errors'][] = $result->getErrorMessages();
+          }
         }
 
         if (!empty($category['children'])) {
@@ -152,35 +156,32 @@ class OzonImportService
        'CARVING_VALUE' => '',
       ]);
 
-      $isExist = $ozonCatalogProductService->getList([
+      $elementExist = $ozonCatalogProductService->getList([
        'filter' => [
         'PRODUCT_ID_VALUE' => $product['id']
        ],
       ])->first();
-      if (!empty($isExist)) {
-        $elementId = $isExist->getValueByKey('ID');
+      if (!empty($elementExist)) {
+        $elementId = $elementExist->getValueByKey('ID');
         $model->setId($elementId);
       }
 
       if ($sectionId > 0) {
         $result = $ozonCatalogProductService->save($model);
-      } else {
-        $result = new Result();
-        $result->isSuccess() == false;
       }
 
-      if ($result->isSuccess() == true) {
-        if ($elementId) {
-          $this->importResult['update']++;
+      if ($result->isSuccess() == true && $sectionId > 0) {
+        if (!empty($elementExist)) {
+          $this->importResult['exists']++;
+          $this->importResult['productList'][] = [
+           $product['id'],
+           $product['name'],
+          ];
         } else {
           $this->importResult['success']++;
         }
       } else {
-        $this->importResult['error']++;
-        $this->importResult['errorsList'][] = [
-         $product['id'],
-         $product['name'],
-        ];
+        $this->importResult['errors'][] = $result->getErrorMessages();
       }
     }
 
