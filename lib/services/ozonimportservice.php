@@ -157,13 +157,18 @@ class OzonImportService
        ],
       ])->first();
       if (!empty($isExist)) {
-        $model->setId($isExist->getValueByKey('ID'));
+        $elementId = $isExist->getValueByKey('ID');
+        $model->setId($elementId);
       }
 
       $result = $ozonCatalogProductService->save($model);
 
       if ($result->isSuccess() == true) {
-        $this->importResult['success']++;
+        if ($elementId) {
+          $this->importResult['update']++;
+        } else {
+          $this->importResult['success']++;
+        }
       } else {
         $this->importResult['error']++;
         $this->importResult['errorsList'][] = [
