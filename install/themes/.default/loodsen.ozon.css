@@ -1,0 +1,26 @@
+/*Menu icon*/
+.ozon_menu_icon {
+    background-size: 16px;
+    background-position: center;
+    background-image: url(/bitrix/themes/.default/icons/loodsen.ozon/ozon-icon.png);
+}
+.ozon_page_icon {
+    background-size: 16px;
+    background-position: center;
+    background-image: url(/bitrix/themes/.default/icons/loodsen.ozon/ozon-icon.png);
+}
+.ozon_settings_icon {
+    background-size: 16px;
+    background-position: center;
+    background-image: url(/bitrix/themes/.default/icons/loodsen.ozon/settings-icon.png);
+}
+.ozon_settings_icon {
+    background-size: 16px;
+    background-position: center;
+    background-image: url(/bitrix/themes/.default/icons/loodsen.ozon/settings-icon.png);
+}
+.ozon_import_icon {
+    background-size: 16px;
+    background-position: center;
+    background-image: url(/bitrix/themes/.default/icons/loodsen.ozon/import-icon.png);
+}
