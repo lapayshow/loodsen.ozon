@@ -5,6 +5,7 @@ namespace Loodsen\Ozon\Services;
 use Bitrix\Forum\File;
 use Bitrix\Iblock\Iblock;
 use Bitrix\Main\Loader;
+use Bitrix\Main\Result;
 use Loodsen\Ozon\Models\Catalog\OzonCatalogProductModel;
 use Loodsen\Ozon\Models\Catalog\OzonCatalogSectionModel;
 use Loodsen\Ozon\Services\Catalog\OzonCatalogSectionService;
@@ -161,7 +162,12 @@ class OzonImportService
         $model->setId($elementId);
       }
 
-      $result = $ozonCatalogProductService->save($model);
+      if ($sectionId > 0) {
+        $result = $ozonCatalogProductService->save($model);
+      } else {
+        $result = new Result();
+        $result->isSuccess() == false;
+      }
 
       if ($result->isSuccess() == true) {
         if ($elementId) {
