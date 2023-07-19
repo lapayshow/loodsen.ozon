@@ -102,6 +102,9 @@ if ($message)
             console.log(response);
         }, function (response) {
             // Ошибки импорта
+            $('.result_import_category').html(
+                'Ошибка импорта: ' + (errors ?? 0)
+            );
             console.log(response);
         });
     });
@@ -120,7 +123,11 @@ if ($message)
             );
             console.log(response);
         }, function (response) {
+            let errors = response.errors;
             // Ошибки импорта
+            $('.result_import_products').html(
+                'Ошибка импорта: ' + (errors ?? 0)
+            );
             console.log(response);
         });
     });
