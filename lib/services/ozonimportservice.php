@@ -173,7 +173,7 @@ class OzonImportService
       }
     }
 
-    return [];
+    return $this->importResult;
   }
 
   protected function getSectionIdByOzonCategoryId($categoryId): ?string
