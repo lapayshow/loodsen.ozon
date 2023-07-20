@@ -48,7 +48,7 @@ class OzonApiController extends Controller
     return 'Ошибка выполнения импорта';
   }
 
-  public function getCategoriesAction(): string
+  public function getCategoriesAction(): ?array
   {
     $ozonImportService = $this->ozonImportService;
 
@@ -56,11 +56,10 @@ class OzonApiController extends Controller
 
     $result = $ozonImportService->saveCategoryList($categoryTree);
 
-    return "Успешно импортировано категорий: " . ($result['success'] ?? "0") . "<br>"
-     . "Уже существующих категорий: " . ($result['error'] ?? "0");
+    return $result;
   }
 
-  public function getProductsAction(): string
+  public function getProductsAction(): ?array
   {
     $ozonImportService = $this->ozonImportService;
     $arProducts = $this->getFullProductList();
@@ -74,9 +73,7 @@ class OzonApiController extends Controller
 
     $result = $ozonImportService->saveProductList($productList);
 
-    return "Успешно импортировано товаров: " . ($result['success'] ?? "0") . "<br>"
-     . "Успешно обновлено товаров: " . ($result['update'] ?? "0") . "<br>"
-     . "Ошибки импорта: "  . ($result['error'] ?? "0");
+    return $result;
   }
 
   // Возвращает дерево категорий товаров от указанного в настройках модуля
