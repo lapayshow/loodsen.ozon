@@ -46,6 +46,19 @@ class OzonCatalogProductModel extends AbsOptimizedModel
 			"carving" => $this->getCarving(),
 			"product_id" => $this->getProductId(),
 			"offer_id" => $this->getOfferId(),
+			"images" => $this->getImages(),
+			"discount" => $this->getDiscount(),
+			"height" => $this->getHeight(),
+			"width" => $this->getWidth(),
+			"depth" => $this->getDepth(),
+			"dimension_unit" => $this->getDimensionUnit(),
+			"weight" => $this->getWeight(),
+			"weight_unit" => $this->getWeightUnit(),
+			"currency_code" => $this->getCurrencyCode(),
+			"price" => $this->getPrice(),
+			"marketing_price" => $this->getMarketingPrice(),
+			"old_price" => $this->getOldPrice(),
+			"min_price" => $this->getMinPrice(),
 		];
 	}
 
@@ -675,4 +688,250 @@ class OzonCatalogProductModel extends AbsOptimizedModel
 	{
 		$this["OFFER_ID_VALUE"] = $value;
 	}
+
+  /**
+   * @return string
+   */
+  public function getImages(): string
+  {
+    return (string)$this["IMAGES_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setImages(string $value)
+  {
+    $this["IMAGES_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getDiscount(): string
+  {
+    return (string)$this["DISCOUNT_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setDiscount(string $value)
+  {
+    $this["DISCOUNT_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getHeight(): string
+  {
+    return (string)$this["HEIGHT_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setHeight(string $value)
+  {
+    $this["HEIGHT_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getWidth(): string
+  {
+    return (string)$this["WIDTH_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setWidth(string $value)
+  {
+    $this["WIDTH_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getDepth(): string
+  {
+    return (string)$this["DEPTH_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setDepth(string $value)
+  {
+    $this["DEPTH_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getDimensionUnit(): string
+  {
+    return (string)$this["DIMENSION_UNIT_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setDimensionUnit(string $value)
+  {
+    $this["DIMENSION_UNIT_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getWeight(): string
+  {
+    return (string)$this["WEIGHT_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setWeight(string $value)
+  {
+    $this["WEIGHT_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getWeightUnit(): string
+  {
+    return (string)$this["WEIGHT_UNIT_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setWeightUnit(string $value)
+  {
+    $this["WEIGHT_UNIT_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getCurrencyCode(): string
+  {
+    return (string)$this["CURRENCY_CODE_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setCurrencyCode(string $value)
+  {
+    $this["CURRENCY_CODE_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getPrice(): string
+  {
+    return (string)$this["PRICE_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setPrice(string $value)
+  {
+    $this["PRICE_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getMarketingPrice(): string
+  {
+    return (string)$this["MARKETING_PRICE_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setMarketingPrice(string $value)
+  {
+    $this["MARKETING_PRICE_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getOldPrice(): string
+  {
+    return (string)$this["OLD_PRICE_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setOldPrice(string $value)
+  {
+    $this["OLD_PRICE_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getMinPrice(): string
+  {
+    return (string)$this["MIN_PRICE_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setMinPrice(string $value)
+  {
+    $this["MIN_PRICE_VALUE"] = $value;
+  }
 }
