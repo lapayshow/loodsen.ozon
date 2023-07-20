@@ -115,7 +115,7 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
       "CARVING_VALUE" => "CARVING.VALUE",
       "PRODUCT_ID_VALUE" => "PRODUCT_ID.VALUE",
       "OFFER_ID_VALUE" => "OFFER_ID.VALUE",
-      "IMAGES_VALUE" => "IMAGES.VALUE",
+      "IMAGES_LIST_VALUE" => "IMAGES_LIST.VALUE",
       "DISCOUNT_VALUE" => "DISCOUNT.VALUE",
       "HEIGHT_VALUE" => "HEIGHT.VALUE",
       "WIDTH_VALUE" => "WIDTH.VALUE",
@@ -325,8 +325,8 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
         $element->set('OFFER_ID', $model->getOfferId());
       }
 
-      if($model->hasValueKey('IMAGES_VALUE')) {
-        $element->set('IMAGES', $model->getImages());
+      if($model->hasValueKey('IMAGES_LIST_VALUE')) {
+        $element->set('IMAGES_LIST', $model->getImagesList());
       }
 
       if($model->hasValueKey('DISCOUNT_VALUE')) {
@@ -434,7 +434,7 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
      "carving" => "CARVING.VALUE",
      "product_id" => "PRODUCT_ID.VALUE",
      "offer_id" => "OFFER_ID.VALUE",
-     "images" => "IMAGES.VALUE",
+     "images_list" => "IMAGES_LIST.VALUE",
      "discount" => "DISCOUNT.VALUE",
      "height" => "HEIGHT.VALUE",
      "width" => "WIDTH.VALUE",
@@ -490,7 +490,7 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
      "carving" => "CARVING.VALUE",
      "product_id" => "PRODUCT_ID.VALUE",
      "offer_id" => "OFFER_ID.VALUE",
-     "images" => "IMAGES.VALUE",
+     "images_list" => "IMAGES_LIST.VALUE",
      "discount" => "DISCOUNT.VALUE",
      "height" => "HEIGHT.VALUE",
      "width" => "WIDTH.VALUE",

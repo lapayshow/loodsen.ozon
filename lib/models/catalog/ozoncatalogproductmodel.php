@@ -46,7 +46,7 @@ class OzonCatalogProductModel extends AbsOptimizedModel
 			"carving" => $this->getCarving(),
 			"product_id" => $this->getProductId(),
 			"offer_id" => $this->getOfferId(),
-			"images" => $this->getImages(),
+			"images_list" => $this->getImagesList(),
 			"discount" => $this->getDiscount(),
 			"height" => $this->getHeight(),
 			"width" => $this->getWidth(),
@@ -692,9 +692,9 @@ class OzonCatalogProductModel extends AbsOptimizedModel
   /**
    * @return string
    */
-  public function getImages(): string
+  public function getImagesList(): string
   {
-    return (string)$this["IMAGES_VALUE"];
+    return (string)$this["IMAGES_LIST_VALUE"];
   }
 
 
@@ -704,7 +704,7 @@ class OzonCatalogProductModel extends AbsOptimizedModel
    */
   public function setImages(string $value)
   {
-    $this["IMAGES_VALUE"] = $value;
+    $this["IMAGES_LIST_VALUE"] = $value;
   }
 
 

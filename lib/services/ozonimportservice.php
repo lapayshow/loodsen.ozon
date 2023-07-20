@@ -169,7 +169,7 @@ class OzonImportService
       ]);
 
       foreach ($product['images'] as $image) {
-        $model['IMAGES_VALUE'] = (empty($model['IMAGES_VALUE'])) ? $image['file_name'] : $model['IMAGES_VALUE'] . '|' . $image['file_name'];
+        $model['IMAGES_LIST_VALUE'] = (empty($model['IMAGES_LIST_VALUE'])) ? $image['file_name'] : $model['IMAGES_LIST_VALUE'] . '|' . $image['file_name'];
       }
 
       $elementExist = $ozonCatalogProductService->getList([
