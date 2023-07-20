@@ -154,7 +154,23 @@ class OzonImportService
        'ALTERNATE_ARTIKUL_VALUE' => '',
        'AMOUNT_VALUE' => '',
        'CARVING_VALUE' => '',
+       "DISCOUNT_VALUE" => '',
+       "HEIGHT_VALUE" => $product['height'],
+       "WIDTH_VALUE" => $product['width'],
+       "DEPTH_VALUE" => $product['depth'],
+       "DIMENSION_UNIT_VALUE" => $product['dimension_unit'],
+       "WEIGHT_VALUE" => $product['weight'],
+       "WEIGHT_UNIT_VALUE" => $product['weight_unit'],
+       "CURRENCY_CODE_VALUE" => $product['product_info']['currency_code'],
+       "PRICE_VALUE" => $product['product_info']['price'],
+       "MARKETING_PRICE_VALUE" => $product['product_info']['marketing_price'],
+       "OLD_PRICE_VALUE" => $product['product_info']['old_price'],
+       "MIN_PRICE_VALUE" => $product['product_info']['min_price'],
       ]);
+
+      foreach ($product['images'] as $image) {
+        $model['IMAGES_VALUE'] = (empty($model['IMAGES_VALUE'])) ? $image['file_name'] : $model['IMAGES_VALUE'] . '|' . $image['file_name'];
+      }
 
       $elementExist = $ozonCatalogProductService->getList([
        'filter' => [

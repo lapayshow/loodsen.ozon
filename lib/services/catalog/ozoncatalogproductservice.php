@@ -114,7 +114,20 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
       "AMOUNT_VALUE" => "AMOUNT.VALUE",
       "CARVING_VALUE" => "CARVING.VALUE",
       "PRODUCT_ID_VALUE" => "PRODUCT_ID.VALUE",
-      "OFFER_ID_VALUE" => "OFFER_ID.VALUE"
+      "OFFER_ID_VALUE" => "OFFER_ID.VALUE",
+      "IMAGES_VALUE" => "IMAGES.VALUE",
+      "DISCOUNT_VALUE" => "DISCOUNT.VALUE",
+      "HEIGHT_VALUE" => "HEIGHT.VALUE",
+      "WIDTH_VALUE" => "WIDTH.VALUE",
+      "DEPTH_VALUE" => "DEPTH.VALUE",
+      "DIMENSION_UNIT_VALUE" => "DIMENSION_UNIT.VALUE",
+      "WEIGHT_VALUE" => "WEIGHT.VALUE",
+      "WEIGHT_UNIT_VALUE" => "WEIGHT_UNIT.VALUE",
+      "CURRENCY_CODE_VALUE" => "CURRENCY_CODE.VALUE",
+      "PRICE_VALUE" => "PRICE.VALUE",
+      "MARKETING_PRICE_VALUE" => "MARKETING_PRICE.VALUE",
+      "OLD_PRICE_VALUE" => "OLD_PRICE.VALUE",
+      "MIN_PRICE_VALUE" => "MIN_PRICE.VALUE",
      ];
     $list = ElementCatalogozonTable::getList($params);
 
@@ -312,6 +325,58 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
         $element->set('OFFER_ID', $model->getOfferId());
       }
 
+      if($model->hasValueKey('IMAGES_VALUE')) {
+        $element->set('IMAGES', $model->getImages());
+      }
+
+      if($model->hasValueKey('DISCOUNT_VALUE')) {
+        $element->set('DISCOUNT', $model->getDiscount());
+      }
+
+      if($model->hasValueKey('HEIGHT_VALUE')) {
+        $element->set('HEIGHT', $model->getHeight());
+      }
+
+      if($model->hasValueKey('WIDTH_VALUE')) {
+        $element->set('WIDTH', $model->getWidth());
+      }
+
+      if($model->hasValueKey('DEPTH_VALUE')) {
+        $element->set('DEPTH', $model->getDepth());
+      }
+
+      if($model->hasValueKey('DIMENSION_UNIT_VALUE')) {
+        $element->set('DIMENSION_UNIT', $model->getDimensionUnit());
+      }
+
+      if($model->hasValueKey('WEIGHT_VALUE')) {
+        $element->set('WEIGHT', $model->getWeight());
+      }
+
+      if($model->hasValueKey('WEIGHT_UNIT_VALUE')) {
+        $element->set('WEIGHT_UNIT', $model->getWeightUnit());
+      }
+
+      if($model->hasValueKey('CURRENCY_CODE_VALUE')) {
+        $element->set('CURRENCY_CODE', $model->getCurrencyCode());
+      }
+
+      if($model->hasValueKey('PRICE_VALUE')) {
+        $element->set('PRICE', $model->getPrice());
+      }
+
+      if($model->hasValueKey('MARKETING_PRICE_VALUE')) {
+        $element->set('MARKETING_PRICE', $model->getMarketingPrice());
+      }
+
+      if($model->hasValueKey('OLD_PRICE_VALUE')) {
+        $element->set('OLD_PRICE', $model->getOldPrice());
+      }
+
+      if($model->hasValueKey('MIN_PRICE_VALUE')) {
+        $element->set('MIN_PRICE', $model->getMinPrice());
+      }
+
       $oElementOld = new CIBlockElement();
       $sectionId = $model->getIblockSectionId();
       if ($model->getId() > 0) {
@@ -369,6 +434,19 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
      "carving" => "CARVING.VALUE",
      "product_id" => "PRODUCT_ID.VALUE",
      "offer_id" => "OFFER_ID.VALUE",
+     "images" => "IMAGES.VALUE",
+     "discount" => "DISCOUNT.VALUE",
+     "height" => "HEIGHT.VALUE",
+     "width" => "WIDTH.VALUE",
+     "depth" => "DEPTH.VALUE",
+     "dimension_unit" => "DIMENSION_UNIT.VALUE",
+     "weight" => "WEIGHT.VALUE",
+     "weight_unit" => "WEIGHT_UNIT.VALUE",
+     "currency_code" => "CURRENCY_CODE.VALUE",
+     "price" => "PRICE.VALUE",
+     "marketing_price" => "MARKETING_PRICE.VALUE",
+     "old_price" => "OLD_PRICE.VALUE",
+     "min_price" => "MIN_PRICE.VALUE",
     ];
   }
 
@@ -412,6 +490,19 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
      "carving" => "CARVING.VALUE",
      "product_id" => "PRODUCT_ID.VALUE",
      "offer_id" => "OFFER_ID.VALUE",
+     "images" => "IMAGES.VALUE",
+     "discount" => "DISCOUNT.VALUE",
+     "height" => "HEIGHT.VALUE",
+     "width" => "WIDTH.VALUE",
+     "depth" => "DEPTH.VALUE",
+     "dimension_unit" => "DIMENSION_UNIT.VALUE",
+     "weight" => "WEIGHT.VALUE",
+     "weight_unit" => "WEIGHT_UNIT.VALUE",
+     "currency_code" => "CURRENCY_CODE.VALUE",
+     "price" => "PRICE.VALUE",
+     "marketing_price" => "MARKETING_PRICE.VALUE",
+     "old_price" => "OLD_PRICE.VALUE",
+     "min_price" => "MIN_PRICE.VALUE",
     ];
   }
 }
