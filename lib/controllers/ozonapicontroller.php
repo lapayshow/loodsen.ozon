@@ -161,6 +161,7 @@ class OzonApiController extends Controller
       $post = [
        'filter' => [
         'product_id' => $chunk,
+        'visibility' => 'VISIBLE'
        ],
        'limit'  => $this->ozonApiMaxGetLimit,
       ];
