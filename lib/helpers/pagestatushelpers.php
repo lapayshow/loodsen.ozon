@@ -1,8 +1,8 @@
 <?php
 
-namespace Loodsen\Ozon\Services;
+namespace Loodsen\Ozon\Helpers;
 
-class PageStatusHelper
+class PageStatusHelpers
 {
   public static function setStatus404()
   {
