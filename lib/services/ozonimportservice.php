@@ -171,8 +171,8 @@ class OzonImportService
        "MARKETING_PRICE_VALUE" => $product['product_info']['marketing_price'],
        "OLD_PRICE_VALUE" => $product['product_info']['old_price'],
        "MIN_PRICE_VALUE" => $product['product_info']['min_price'],
-       "FBS" => $FBS,
-       "FBO" => $FBO,
+       "FBS_VALUE" => $FBS,
+       "FBO_VALUE" => $FBO,
       ]);
 
       foreach ($product['images'] as $image) {
