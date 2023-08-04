@@ -131,11 +131,11 @@ class OzonImportService
       }
 
       $FBS = (array_key_exists(1, $product['product_info']['sources'])
-       && array_key_exists('source', $product['product_info']['sources'][1]) && $product['product_info']['sources']['source'] == 'fbs')
+       && array_key_exists('source', $product['product_info']['sources'][1]) && $product['product_info']['sources'][1]['source'] == 'fbs')
        ? $product['product_info']['sources'][1]['sku'] : '';
 
       $FBO = (array_key_exists(0, $product['product_info']['sources'])
-       && array_key_exists('source', $product['product_info']['sources'][0]) && $product['product_info']['sources']['source'] == 'fbo')
+       && array_key_exists('source', $product['product_info']['sources'][0]) && $product['product_info']['sources'][0]['source'] == 'fbo')
        ? $product['product_info']['sources'][0]['sku'] : '';
 
       // Указываем какие данные сохраняем после импорта
