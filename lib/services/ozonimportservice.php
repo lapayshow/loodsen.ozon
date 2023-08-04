@@ -34,7 +34,6 @@ class OzonImportService
 
     $iblockId = $ozonCatalogSectionService->getIblockId();
 
-    $result = [];
     foreach ($categoryList as $category) {
       if (!empty($category['category_id'])) {
         if (!empty($category['title'])) {
@@ -131,6 +130,15 @@ class OzonImportService
         }
       }
 
+      $FBS = (array_key_exists(1, $product['product_info']['sources'])
+       && array_key_exists(1, $product['product_info']['sources'][1]['source']) && $product['product_info']['sources']['source'] == 'fbs')
+       ? $product['product_info']['sources'][1]['sku'] : '';
+
+      $FBO = (array_key_exists(0, $product['product_info']['sources'])
+       && array_key_exists(0, $product['product_info']['sources'][0]['source']) && $product['product_info']['sources']['source'] == 'fbo')
+       ? $product['product_info']['sources'][0]['sku'] : '';
+
+      // Указываем какие данные сохраняем после импорта
       $model = new OzonCatalogProductModel([
        'NAME' => $product['name'],
        'CODE' => $translitCategoryTitle,
@@ -166,6 +174,8 @@ class OzonImportService
        "MARKETING_PRICE_VALUE" => $product['product_info']['marketing_price'],
        "OLD_PRICE_VALUE" => $product['product_info']['old_price'],
        "MIN_PRICE_VALUE" => $product['product_info']['min_price'],
+       "FBS" => $FBS,
+       "FBO" => $FBO,
       ]);
 
       foreach ($product['images'] as $image) {
