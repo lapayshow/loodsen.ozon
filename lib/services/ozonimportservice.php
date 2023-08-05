@@ -131,9 +131,9 @@ class OzonImportService
       }
 
       // TODO: переписать с array_filter по ключу 'sku' (fbo, fbs)
-      $FBS = $product['product_info']['sources'][1]['sku'] ?? '';
+      $FBS = (string) $product['product_info']['sources'][1]['sku'] ?? '';
 
-      $FBO = $product['product_info']['sources'][0]['sku'] ?? '';
+      $FBO = (string) $product['product_info']['sources'][0]['sku'] ?? '';
 
       // Указываем какие данные сохраняем после импорта
       $model = new OzonCatalogProductModel([

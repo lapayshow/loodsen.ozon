@@ -380,11 +380,11 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
       }
 
       if($model->hasValueKey('FBS_VALUE')) {
-        $element->set('FBS', $model->getMinPrice());
+        $element->set('FBS', $model->getFbs());
       }
 
       if($model->hasValueKey('FBO_VALUE')) {
-        $element->set('FBO', $model->getMinPrice());
+        $element->set('FBO', $model->getFbo());
       }
 
       $oElementOld = new CIBlockElement();
