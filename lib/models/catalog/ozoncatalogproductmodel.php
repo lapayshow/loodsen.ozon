@@ -943,7 +943,7 @@ class OzonCatalogProductModel extends AbsOptimizedModel
    */
   public function getFbs(): string
   {
-    return (string)$this["FBS"];
+    return (string)$this["FBS_VALUE"];
   }
 
 
@@ -953,7 +953,7 @@ class OzonCatalogProductModel extends AbsOptimizedModel
    */
   public function setFbs(string $value)
   {
-    $this["FBS"] = $value;
+    $this["FBS_VALUE"] = $value;
   }
 
 
@@ -962,7 +962,7 @@ class OzonCatalogProductModel extends AbsOptimizedModel
    */
   public function getFbo(): string
   {
-    return (string)$this["FBO"];
+    return (string)$this["FBO_VALUE"];
   }
 
 
@@ -972,6 +972,6 @@ class OzonCatalogProductModel extends AbsOptimizedModel
    */
   public function setFbo(string $value)
   {
-    $this["FBO"] = $value;
+    $this["FBO_VALUE"] = $value;
   }
 }
