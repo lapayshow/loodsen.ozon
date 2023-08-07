@@ -33,4 +33,7 @@ class ApiMethodsList
 
   // Получить информацию о цене товара
   public const GET_PRODUCT_INFO_PRICES = '/v4/product/info/prices';
+
+  // Информация об остатках на складах продавца (FBS и rFBS)
+  public const GET_PRODUCT_INFO_STOCK_BY_WAREHOUSE = '/v1/product/info/stocks-by-warehouse/fbs';
 }

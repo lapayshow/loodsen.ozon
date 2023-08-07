@@ -172,6 +172,20 @@ class OzonApiController extends Controller
        $post
       )['result'];
 
+      $post = [
+       'filter' => [
+        'product_id' => $chunk,
+        'visibility' => 'VISIBLE'
+       ],
+       'limit'  => $this->ozonApiMaxGetLimit,
+      ];
+
+      // Получаем инфу об остатках на складах
+      $productStocksInfo = $this->ozonApiClientService->getData(
+       ApiMethodsList::GET_PRODUCT_INFO_STOCKS,
+       $post
+      )['result'];
+
       // Фильтр по атрибуту
       if (!empty($brandAttributeId) && !empty($brandAttributeValue)) {
         foreach ($productAttributes as $key => $product) {
@@ -185,6 +199,11 @@ class OzonApiController extends Controller
               foreach ($productInfo['items'] as $info) {
                 if ($info['id'] == $product['id']) {
                   $productAttributes[$key]['product_info'] = $info;
+                }
+              }
+              foreach ($productStocksInfo['items'] as $stocksInfo) {
+                if ($stocksInfo['product_id'] == $product['id']) {
+                  $productAttributes[$key]['product_stocks_info'] = $stocksInfo;
                 }
               }
               $productsList[] = $productAttributes[$key];
