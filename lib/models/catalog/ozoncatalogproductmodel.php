@@ -59,6 +59,8 @@ class OzonCatalogProductModel extends AbsOptimizedModel
 			"marketing_price" => $this->getMarketingPrice(),
 			"old_price" => $this->getOldPrice(),
 			"min_price" => $this->getMinPrice(),
+			"fbs" => $this->getFbs(),
+			"fbo" => $this->getFbo(),
 		];
 	}
 
@@ -933,5 +935,43 @@ class OzonCatalogProductModel extends AbsOptimizedModel
   public function setMinPrice(string $value)
   {
     $this["MIN_PRICE_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getFbs(): string
+  {
+    return (string)$this["FBS_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setFbs(string $value)
+  {
+    $this["FBS_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getFbo(): string
+  {
+    return (string)$this["FBO_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setFbo(string $value)
+  {
+    $this["FBO_VALUE"] = $value;
   }
 }

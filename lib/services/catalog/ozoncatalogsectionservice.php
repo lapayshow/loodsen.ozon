@@ -308,6 +308,13 @@ class OzonCatalogSectionService extends BaseModelService
   }
 
 
+  public function getSectionActiveElementsCount($iblockSectionId): ?int
+  {
+    $activeElements = CIBlockSection::GetSectionElementsCount($iblockSectionId, Array("CNT_ACTIVE"=>"Y"));
+    return $activeElements;
+  }
+
+
   /**
    * @return array
    */
