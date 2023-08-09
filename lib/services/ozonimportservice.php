@@ -104,6 +104,13 @@ class OzonImportService
 
       $attributeCode = ConfigList::ATTRIBUTES;
 
+      $STOCK = $product['product_stocks_info']['stocks']['1']['present'];
+
+      if ($STOCK < 1) {
+        // TODO: делать неактивными. Дописать код
+        continue;
+      }
+
       foreach ($product['attributes'] as $attribute) {
         switch ($attribute['attribute_id']) {
           case $attributeCode['EQUIPMENT']: $product['EQUIPMENT'] = current($attribute['values'])['value']; break;
@@ -173,6 +180,7 @@ class OzonImportService
        "MIN_PRICE_VALUE" => $product['product_info']['min_price'],
        "FBS_VALUE" => $FBS,
        "FBO_VALUE" => $FBO,
+       "STOCK_VALUE" => $STOCK,
       ]);
 
       foreach ($product['images'] as $image) {

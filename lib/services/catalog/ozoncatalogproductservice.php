@@ -130,6 +130,7 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
       "MIN_PRICE_VALUE" => "MIN_PRICE.VALUE",
       "FBS_VALUE" => "FBS.VALUE",
       "FBO_VALUE" => "FBO.VALUE",
+      "STOCK_VALUE" => "STOCK.VALUE",
      ];
     $list = ElementCatalogozonTable::getList($params);
 
@@ -387,6 +388,10 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
         $element->set('FBO', $model->getFbo());
       }
 
+      if($model->hasValueKey('STOCK_VALUE')) {
+        $element->set('STOCK', $model->getStock());
+      }
+
       $oElementOld = new CIBlockElement();
       $sectionId = $model->getIblockSectionId();
       if ($model->getId() > 0) {
@@ -459,6 +464,7 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
      "min_price" => "MIN_PRICE.VALUE",
      "fbs" => "FBS.VALUE",
      "fbo" => "FBO.VALUE",
+     "stock" => "STOCK.VALUE",
     ];
   }
 
@@ -517,6 +523,7 @@ class OzonCatalogProductService extends BaseLinkedModelService implements Iblock
      "min_price" => "MIN_PRICE.VALUE",
      "fbs" => "FBS.VALUE",
      "fbo" => "FBO.VALUE",
+     "stock" => "STOCK.VALUE",
     ];
   }
 }

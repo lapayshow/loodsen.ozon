@@ -61,6 +61,7 @@ class OzonCatalogProductModel extends AbsOptimizedModel
 			"min_price" => $this->getMinPrice(),
 			"fbs" => $this->getFbs(),
 			"fbo" => $this->getFbo(),
+			"stock" => $this->getStock(),
 		];
 	}
 
@@ -973,5 +974,24 @@ class OzonCatalogProductModel extends AbsOptimizedModel
   public function setFbo(string $value)
   {
     $this["FBO_VALUE"] = $value;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getStock(): string
+  {
+    return (string)$this["STOCK_VALUE"];
+  }
+
+
+  /**
+   * @param string $value
+   * @return void
+   */
+  public function setStock(string $value)
+  {
+    $this["STOCK_VALUE"] = $value;
   }
 }
