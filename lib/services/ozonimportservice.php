@@ -104,10 +104,21 @@ class OzonImportService
 
       $attributeCode = ConfigList::ATTRIBUTES;
 
-      $STOCK = $product['product_stocks_info']['stocks']['1']['present'];
+      // Вычитаем количество зарезервированных и получаем количество доступным к покупке товаров
+      $STOCK = $product['product_stocks_info']['stocks']['1']['present'] - $product['product_stocks_info']['stocks']['1']['reserved'];
 
       if ($STOCK < 1) {
-        // TODO: делать неактивными. Дописать код
+        // Делаем не активными товары, которых нет в наличии
+        $modelData = $ozonCatalogProductService->getList([
+         'filter' => [
+          'PRODUCT_ID_VALUE' => 504642374
+         ],
+        ])->getApiModel()[0];
+        $ozonCatalogProductModel = new OzonCatalogProductModel([
+         'ID' => $modelData['id'],
+         'ACTIVE' => 'N'
+        ]);
+        $ozonCatalogProductService->save($ozonCatalogProductModel);
         continue;
       }
 
@@ -146,6 +157,7 @@ class OzonImportService
       $model = new OzonCatalogProductModel([
        'NAME' => $product['name'],
        'CODE' => $translitCategoryTitle,
+       'ACTIVE' => 'Y',
        'IBLOCK_SECTION_ID' => $sectionId,
        'PREVIEW_PICTURE' => '',
        'DETAIL_PICTURE' => '',

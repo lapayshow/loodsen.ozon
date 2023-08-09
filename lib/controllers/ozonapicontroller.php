@@ -2,9 +2,12 @@
 
 namespace Loodsen\Ozon\Controllers;
 
+use Bx\Model\Services\FileService;
 use COption;
 use Bitrix\Main\Engine\Controller;
 use Bitrix\Main\Request;
+use Loodsen\Ozon\Models\Catalog\OzonCatalogProductModel;
+use Loodsen\Ozon\Services\Catalog\OzonCatalogProductService;
 use Loodsen\Ozon\Services\OzonApiClientService;
 use Loodsen\Ozon\References\ApiMethodsList;
 use Loodsen\Ozon\References\ConfigList;
