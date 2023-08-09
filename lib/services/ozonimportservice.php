@@ -104,6 +104,24 @@ class OzonImportService
 
       $attributeCode = ConfigList::ATTRIBUTES;
 
+      // Вычитаем количество зарезервированных и получаем количество доступным к покупке товаров
+      $STOCK = $product['product_stocks_info']['stocks']['1']['present'] - $product['product_stocks_info']['stocks']['1']['reserved'];
+
+      if ($STOCK < 1) {
+        // Делаем не активными товары, которых нет в наличии
+        $modelData = $ozonCatalogProductService->getList([
+         'filter' => [
+          'PRODUCT_ID_VALUE' => 504642374
+         ],
+        ])->getApiModel()[0];
+        $ozonCatalogProductModel = new OzonCatalogProductModel([
+         'ID' => $modelData['id'],
+         'ACTIVE' => 'N'
+        ]);
+        $ozonCatalogProductService->save($ozonCatalogProductModel);
+        continue;
+      }
+
       foreach ($product['attributes'] as $attribute) {
         switch ($attribute['attribute_id']) {
           case $attributeCode['EQUIPMENT']: $product['EQUIPMENT'] = current($attribute['values'])['value']; break;
@@ -139,6 +157,7 @@ class OzonImportService
       $model = new OzonCatalogProductModel([
        'NAME' => $product['name'],
        'CODE' => $translitCategoryTitle,
+       'ACTIVE' => 'Y',
        'IBLOCK_SECTION_ID' => $sectionId,
        'PREVIEW_PICTURE' => '',
        'DETAIL_PICTURE' => '',
@@ -173,6 +192,7 @@ class OzonImportService
        "MIN_PRICE_VALUE" => $product['product_info']['min_price'],
        "FBS_VALUE" => $FBS,
        "FBO_VALUE" => $FBO,
+       "STOCK_VALUE" => $STOCK,
       ]);
 
       foreach ($product['images'] as $image) {
