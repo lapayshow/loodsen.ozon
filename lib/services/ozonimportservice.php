@@ -111,7 +111,7 @@ class OzonImportService
         // Делаем не активными товары, которых нет в наличии
         $modelData = $ozonCatalogProductService->getList([
          'filter' => [
-          'PRODUCT_ID_VALUE' => 504642374
+          'PRODUCT_ID_VALUE' => $product['id']
          ],
         ])->getApiModel()[0];
         $ozonCatalogProductModel = new OzonCatalogProductModel([
