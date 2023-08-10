@@ -22,7 +22,7 @@ class FullImportService
     $logDataCategory = date('Y-m-d H:i:s') . ' ' . print_r($categoriesResponse, true);
     $logDataProducts = date('Y-m-d H:i:s') . ' ' . print_r($productsResponse, true);
 
-    $logFile = '../../../import_logs/full_import_' . date('d-m-Y-H_i_s');
+    $logFile = '../../../import_logs/full_import_' . date('d-m-Y-H_i_s') . '.log';
 
     file_put_contents($logFile, $logDataCategory . PHP_EOL, FILE_APPEND);
     file_put_contents($logFile, $logDataProducts . PHP_EOL, FILE_APPEND);
