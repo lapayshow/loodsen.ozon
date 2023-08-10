@@ -4,7 +4,7 @@ use Loodsen\Ozon\Services\Cron\FullImportService;
 
 $isCli = (php_sapi_name() == 'cli');
 
-if ($isCli) {
+//if ($isCli) {
   define('NO_AGENT_CHECK', true);
   define('DisableEventsCheck', true);
   define('NO_KEEP_STATISTIC', true);
@@ -16,5 +16,5 @@ if ($isCli) {
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
-  FullImportService::UpdateCategoriesOnly();
-}
+  FullImportService::FullImport();
+//}
