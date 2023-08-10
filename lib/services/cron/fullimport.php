@@ -16,5 +16,5 @@ $isCli = (php_sapi_name() == 'cli');
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
-  FullImportService::UpdateCategoriesOnly();
+  FullImportService::FullImport();
 //}

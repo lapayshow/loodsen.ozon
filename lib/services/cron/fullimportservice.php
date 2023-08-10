@@ -8,6 +8,15 @@ class FullImportService
 {
 
   // Обновление категорий
+  public static function FullImport(): ?bool
+  {
+    self::UpdateCategoriesOnly();
+    self::UpdateProductsOnly();
+
+    return null;
+  }
+
+  // Обновление категорий
   public static function UpdateCategoriesOnly(): ?bool
   {
     $ozonApiController = new OzonApiController;
