@@ -12,16 +12,16 @@ class FullImportService
   {
     $ozonApiController = new OzonApiController;
 
-    $productsResponse = $ozonApiController->getCategoriesAction();
+    $categoriesResponse = $ozonApiController->getCategoriesAction();
 
     $dir = '../../../import_logs';
     if (!file_exists($dir)) {
       mkdir($dir, 0777, true);
     }
 
-    $logDataProducts = date('Y-m-d H:i:s') . ' ' . print_r($productsResponse, true);
+    $logDataProducts = date('Y-m-d H:i:s') . ' ' . print_r($categoriesResponse, true);
 
-    $logFile = '../../../import_logs/import_products_' . date('d-m-Y-H_i_s') . '.log';
+    $logFile = '../../../import_logs/import_catalogs_' . date('d-m-Y-H_i_s') . '.log';
 
     file_put_contents($logFile, $logDataProducts . PHP_EOL, FILE_APPEND);
 
@@ -33,18 +33,18 @@ class FullImportService
   {
     $ozonApiController = new OzonApiController;
 
-    $categoriesResponse = $ozonApiController->getProductsAction();
+    $productsResponse = $ozonApiController->getProductsAction();
 
     $dir = '../../../import_logs';
     if (!file_exists($dir)) {
       mkdir($dir, 0777, true);
     }
 
-    $logDataCategory = date('Y-m-d H:i:s') . ' ' . print_r($categoriesResponse, true);
+    $logDataProducts = date('Y-m-d H:i:s') . ' ' . print_r($productsResponse, true);
 
-    $logFile = '../../../import_logs/import_catalogs_' . date('d-m-Y-H_i_s') . '.log';
+    $logFile = '../../../import_logs/import_products_' . date('d-m-Y-H_i_s') . '.log';
 
-    file_put_contents($logFile, $logDataCategory . PHP_EOL, FILE_APPEND);
+    file_put_contents($logFile, $logDataProducts . PHP_EOL, FILE_APPEND);
 
     return null;
   }
