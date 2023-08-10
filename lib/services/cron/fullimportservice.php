@@ -12,7 +12,7 @@ class FullImportService
   {
     $ozonApiController = new OzonApiController;
 
-    $productsResponse = $ozonApiController->getProductsAction();
+    $productsResponse = $ozonApiController->getCategoriesAction();
 
     $dir = '../../../import_logs';
     if (!file_exists($dir)) {
@@ -33,7 +33,7 @@ class FullImportService
   {
     $ozonApiController = new OzonApiController;
 
-    $categoriesResponse = $ozonApiController->getCategoriesAction();
+    $categoriesResponse = $ozonApiController->getProductsAction();
 
     $dir = '../../../import_logs';
     if (!file_exists($dir)) {
