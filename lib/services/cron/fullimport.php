@@ -1,7 +1,6 @@
 <?php
 
 use Loodsen\Ozon\Services\Cron\FullImportService;
-use Bitrix\Main\Loader;
 
 $isCli = (php_sapi_name() == 'cli');
 
@@ -17,8 +16,5 @@ $isCli = (php_sapi_name() == 'cli');
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
-  Loader::includeModule('loodsen.ozon');
-  Loader::includeModule('loodsen.yandex.feeds');
   FullImportService::FullImport();
-  ( new Loodsen\Yandex\Feeds\Ozon\Feed() )->createFile();
 //}
