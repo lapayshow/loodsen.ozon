@@ -1,0 +1,17 @@
+{
+    "name": "loodsendev/loodsen.ozon",
+    "type": "bitrix-module",
+    "description": "Интеграция Bitrix с ozon.ru с хранением в инфоблоках",
+    "authors": [
+        {
+            "name": "Dmitry Lapaev",
+            "email": "lapayshow@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "classmap": ["lib/"]
+    }
+}
